@@ -10,6 +10,6 @@ spring:
   application:
     name: order-service
 
-product_service:
+product-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

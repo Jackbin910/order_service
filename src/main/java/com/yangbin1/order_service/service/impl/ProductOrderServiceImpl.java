@@ -8,7 +8,9 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class ProductOrderServiceImpl implements ProductOrderService {
@@ -30,11 +32,11 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 
         Map<String,Object> productMap = restTemplate.getForObject(url, Map.class);
         ProductOrder productOrder = new ProductOrder();
-//        productOrder.setCreateTime(new Date());
-//        productOrder.setUserId(userId);
-//        productOrder.setTradeNo(UUID.randomUUID().toString());
-//        productOrder.setProductName(productMap.get("name").toString());
-//        productOrder.setPrice(Integer.parseInt(productMap.get("price").toString()));
+        productOrder.setCreateTime(new Date());
+        productOrder.setUserId(userId);
+        productOrder.setTradeNo(UUID.randomUUID().toString());
+        productOrder.setProductName(productMap.get("name").toString());
+        productOrder.setPrice(Integer.parseInt(productMap.get("price").toString()));
         return productOrder;
     }
 }

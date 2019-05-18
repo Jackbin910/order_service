@@ -13,3 +13,10 @@ spring:
 product-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+feign:
+  client:
+    config:
+      default:
+        connectionTimeout: 5000
+        readTimeout: 5000

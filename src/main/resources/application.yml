@@ -9,6 +9,12 @@ eureka:
 spring:
   application:
     name: order-service
+  redis:
+    database: 0
+    host: 192.168.159.128
+    port: 6379
+    timeout: 2000
+
 
 product-service:
   ribbon:

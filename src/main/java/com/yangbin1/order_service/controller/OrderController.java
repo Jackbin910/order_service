@@ -1,7 +1,6 @@
 package com.yangbin1.order_service.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.yangbin1.order_service.service.ProductOrderService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,6 @@ public class OrderController {
 
     @RequestMapping("save")
     @HystrixCommand(fallbackMethod = "saveOrderFail")
-    @HystrixProperty(name = "hystrix.command.default.execution.timeout.enabled", value = "false")
     public Object save(@RequestParam("user_id") int userId, @RequestParam("product_id") int productId, HttpServletRequest request){
         Map<String,Object> data = new HashMap<>();
         data.put("code",0);

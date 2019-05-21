@@ -5,6 +5,8 @@ import com.yangbin1.order_service.domain.ProductOrder;
 import com.yangbin1.order_service.service.ProductClient;
 import com.yangbin1.order_service.service.ProductOrderService;
 import com.yangbin1.order_service.utils.JsonUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 
 //    @Autowired
 //    private LoadBalancerClient loadBalancerClient;
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ProductClient productClient;
@@ -35,6 +39,8 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 //        Map<String,Object> productMap = restTemplate.getForObject(url, Map.class);
 
         String response = productClient.findById(productId);
+
+        logger.info("service save order");
         JsonNode jsonNode = JsonUtils.str2JsonNode(response);
 
 
